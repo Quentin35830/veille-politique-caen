@@ -4,15 +4,10 @@ import asyncio
 
 
 async def main() -> None:
-    import mistralai_workflows
-
-    try:
-        from mistralai.workflows import discover_workflows
-    except ImportError:
-        from mistralai_workflows import discover_workflows
+    from mistralai.workflows import discover_workflows, run_worker
 
     discovered = discover_workflows()
-    await mistralai_workflows.run_worker(discovered)
+    await run_worker(discovered)
 
 
 if __name__ == "__main__":
