@@ -2,12 +2,13 @@
 
 import asyncio
 
+import mistralai.workflows as workflows
+
+from src.workflows.veille_caen import VeillePolitiqueCaenWorkflow
+
 
 async def main() -> None:
-    from mistralai.workflows import discover_workflows, run_worker
-
-    discovered = discover_workflows()
-    await run_worker(discovered)
+    await workflows.run_worker([VeillePolitiqueCaenWorkflow])
 
 
 if __name__ == "__main__":
